@@ -1,0 +1,16 @@
+#!/bin/bash
+# Update and install dependencies
+yum update -y
+yum install java-17 -y
+
+# Download and install SonarQube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.6.92038.zip
+unzip sonarqube-9.9.6.92038.zip -d /opt
+mv /opt/sonarqube-9.9.6.92038 /opt/sonarqube
+
+# Create a dedicated user for SonarQube
+useradd -r -s /bin/false sonarqube
+chown -R sonarqube:sonarqube /opt/sonarqube
+
+# Start SonarQube
+sudo -u sonarqube /opt/sonarqube/bin/linux-x86-64/sonar.sh start
