@@ -1,0 +1,10 @@
+#!/bin/bash
+# Update and install dependencies
+yum update -y
+sudo amazon-linux-extras install java-openjdk11 -y
+
+# Install Trivy
+wget https://github.com/aquasecurity/trivy/releases/download/v0.20.0/trivy_0.20.0_Linux-64bit.tar.gz
+tar zxvf trivy_0.20.0_Linux-64bit.tar.gz -C /usr/local/bin
+mv /usr/local/bin/trivy_0.20.0_Linux-64bit /usr/local/bin/trivy
+chmod +x /usr/local/bin/trivy
