@@ -1,0 +1,9 @@
+#!/bin/bash
+# Update and install dependencies
+yum update -y
+sudo amazon-linux-extras install java-openjdk11 -y
+
+# Install Docker
+amazon-linux-extras install docker -y
+service docker start
+usermod -a -G docker ec2-user
